@@ -57,11 +57,23 @@
 
 
 //Dependencies
+var mongoose = require("mongoose");
 var express = require("express");
 var handlebars = require("express-handlebars");
+// var db = require("./models");
 //Initialize Express
 var app = express();
 var PORT = 3000;
+
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  // useMongoClient: true
+});
+
+
 //Middleware
 //the data that you get from the webpage takes the information from the post request and makes the data clean and readable
 app.use(express.urlencoded({extended: true}))
