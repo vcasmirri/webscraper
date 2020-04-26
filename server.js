@@ -59,10 +59,14 @@
 //Dependencies
 var mongoose = require("mongoose");
 var express = require("express");
+var app = express();
 var handlebars = require("express-handlebars");
+var logger = require("morgan");
+var bodyParser = require("body-parser");
+require("./routes/index")(app);
+
 // var db = require("./models");
 //Initialize Express
-var app = express();
 var PORT = 3000;
 
 
@@ -76,9 +80,13 @@ mongoose.connect(MONGODB_URI, {
 
 //Middleware
 //the data that you get from the webpage takes the information from the post request and makes the data clean and readable
-app.use(express.urlencoded({extended: true}))
+app.use(logger("dev"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 //parses the client-side data and converts it to JSON
-app.use(express.json())
+app.use(express.json());
+
+
 app.engine("handlebars", handlebars({defaultLayout: "main"}));
 //the first argument is the name of the extension, the second argument is where you want to populate/render the whole page 
 app.set("view engine", "handlebars");
