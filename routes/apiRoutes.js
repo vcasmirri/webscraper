@@ -30,6 +30,7 @@ var mongoose = require("mongoose");
 var db = require("../models");
 
 
+
 function apiRoutes(app) {
 
 //sunday routes
@@ -122,7 +123,7 @@ app.get("/api/notes/:id", function(req, res) {
 });
 
 app.post("/api/create/notes/:id", function(req, res) {
-    console.log(req.body);
+    console.log("This is supposed to be my req.body: " + req.body);
 
     db.Note.create(req.body)
     .then(function(dbNote) {
