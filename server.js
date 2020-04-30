@@ -67,7 +67,7 @@ require("./routes/index")(app);
 
 // var db = require("./models");
 //Initialize Express
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
