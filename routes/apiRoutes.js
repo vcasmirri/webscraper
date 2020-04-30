@@ -26,6 +26,7 @@
 
 var cheerio = require("cheerio");
 var axios = require("axios");
+
 var mongoose = require("mongoose");
 var db = require("../models");
 
@@ -201,7 +202,7 @@ app.delete("/api/delete/notes/:id", function(req, res) {
           });
       });
 
-app.post("/scrape", (req, res) => {
+app.post("/api/scrape", (req, res) => {
     console.log("static text");
     axios.get("https://www.buzzfeed.com").then(function(response){
         //cheerio will load the get request, data will returns the article web page

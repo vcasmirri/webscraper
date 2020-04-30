@@ -104,7 +104,7 @@ $(function() {
                 body: $("#bodyinput").val()
             }
         }).then(function(result) {
-            console.log("This is the result of saveNoteButton being clicked: " + result);
+            console.log(result);
             let noteAdded = $('<p>');
             noteAdded.addClass('noteAlert');
             noteAdded.text("Note successfully added")
